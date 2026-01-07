@@ -22,19 +22,27 @@ const { title = 'Mon Site Vitrine' } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="min-h-screen flex flex-col">
-		<nav class="bg-arc6-dark-gray p-4">
-			<div class="container mx-auto flex justify-between items-center">
+		<!-- Lignes décoratives globales (en arrière-plan) -->
+		<div class="fixed top-1/3 left-0 w-full h-[2px] bg-white mix-blend-difference z-10 pointer-events-none"></div>
+		<div class="fixed top-0 left-[20%] h-screen w-[2px] bg-white mix-blend-difference z-10 pointer-events-none"></div>
+
+		<nav class="relative bg-arc6-dark-gray p-4 z-30">
+			<!-- Ligne d'illusion (au premier plan de la barre de navigation) -->
+			<div class="absolute top-0 left-[20%] h-full w-[2px] bg-white mix-blend-difference pointer-events-none z-40"></div>
+			<div class="relative container mx-auto flex justify-between items-stretch z-10">
 				<a href="/" class="flex items-center">
 					<Logo class="h-12 text-arc6-blue" />
 				</a>
-				<ul class="flex space-x-4">
-					<li><a href="/" class="text-arc6-blue hover:text-white">Accueil</a></li>
-					<li><a href="/about" class="text-arc6-blue hover:text-white">À Propos</a></li>
-					<li><a href="/services" class="text-arc6-blue hover:text-white">Services</a></li>
-					<li><a href="/contact" class="text-arc6-blue hover:text-white">Contact</a></li>
+				<ul class="flex space-x-2">
+					<li class="h-full"><a href="/" class="px-4 flex items-center h-full text-arc6-blue hover:text-white font-bold font-lexend uppercase text-sm"><span class="relative">Accueil</span></a></li>
+					<li class="h-full"><a href="/about" class="px-4 flex items-center h-full text-arc6-blue hover:text-white font-bold font-lexend uppercase text-sm"><span class="relative">À Propos</span></a></li>
+					<li class="h-full"><a href="/services" class="px-4 flex items-center h-full text-arc6-blue hover:text-white font-bold font-lexend uppercase text-sm"><span class="relative">Services</span></a></li>
+					<li class="h-full"><a href="/contact" class="px-4 flex items-center h-full text-arc6-blue hover:text-white font-bold font-lexend uppercase text-sm"><span class="relative">Contact</span></a></li>
 				</ul>
 			</div>
 		</nav>
-		<slot />
+		<main class="relative z-20">
+			<slot /> <!-- Slot par défaut pour le contenu principal -->
+		</main>
 	</body>
 </html>
