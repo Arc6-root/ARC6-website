@@ -1,1 +1,15 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-arc6-blue text-arc6-dark-gray;
+  }
+  h1 {
+    @apply font-lexend;
+  }
+  h2 {
+    @apply font-arvo;
+  }
+}
