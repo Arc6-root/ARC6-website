@@ -2,30 +2,89 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Contactez-nous">
+<Layout title="Contact - ARC6 Ingénierie">
 	<main class="max-w-4xl mx-auto py-12 px-4">
 		<h1 class="text-4xl font-bold text-center mb-8">Contactez-nous</h1>
-		<p class="text-lg text-center mb-8">
-			N'hésitez pas à nous contacter pour toute question ou demande de renseignements.
-		</p>
-		<form action="https://n8n.gambader.cc/webhook/9f3b37d3-dbf0-4f4c-ad9e-cfbffde9e17b" method="POST" class="bg-white p-8 rounded-lg shadow-md max-w-lg mx-auto">
-			<div class="mb-4">
-				<label for="name" class="block text-sm font-bold mb-2">Nom:</label>
-				<input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
-			</div>
-			<div class="mb-4">
-				<label for="email" class="block text-sm font-bold mb-2">Email:</label>
-				<input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
-			</div>
-			<div class="mb-6">
-				<label for="message" class="block text-sm font-bold mb-2">Message:</label>
-				<textarea id="message" name="message" rows="5" class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-			</div>
-			<div class="flex items-center justify-center">
-				<button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-					Envoyer
-				</button>
-			</div>
-		</form>
+		
+		<div id="form-wrapper" class="max-w-lg mx-auto">
+			<p class="text-lg text-center mb-8">
+				N'hésitez pas à nous contacter pour toute question ou demande de renseignements.
+			</p>
+			<form id="contact-form" method="POST" class="bg-white p-8 rounded-lg shadow-md">
+				<div class="mb-4">
+					<label for="name" class="block text-sm font-bold mb-2">Nom:</label>
+					<input type="text" id="name" name="name" required class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
+				</div>
+				<div class="mb-4">
+					<label for="email" class="block text-sm font-bold mb-2">Email:</label>
+					<input type="email" id="email" name="email" required class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
+				</div>
+				<div class="mb-6">
+					<label for="message" class="block text-sm font-bold mb-2">Message:</label>
+					<textarea id="message" name="message" rows="5" required class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+				</div>
+				<div class="flex items-center justify-center">
+					<button type="submit" class="bg-arc6-dark-gray hover:bg-gray-600 text-arc6-blue font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+						Envoyer
+					</button>
+				</div>
+			</form>
+		</div>
+
+		<!-- Message de succès (caché par défaut) -->
+		<div id="success-message" class="hidden text-center bg-white p-8 rounded-lg shadow-md max-w-lg mx-auto">
+			<h2 class="text-2xl font-bold mb-4">Merci !</h2>
+			<p>Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.</p>
+		</div>
+
+		<!-- Message d'erreur (caché par défaut) -->
+		<div id="error-message" class="hidden text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative max-w-lg mx-auto" role="alert">
+			<strong class="font-bold">Oups !</strong>
+			<span class="block sm:inline">Une erreur s'est produite. Veuillez réessayer.</span>
+		</div>
+
 	</main>
+
+	<script>
+		const form = document.getElementById('contact-form') as HTMLFormElement;
+		const formWrapper = document.getElementById('form-wrapper');
+		const successMessage = document.getElementById('success-message');
+		const errorMessage = document.getElementById('error-message');
+		const webhookUrl = 'https://n8n.gambader.cc/webhook/9f3b37d3-dbf0-4f4c-ad9e-cfbffde9e17b';
+
+		form.addEventListener('submit', async (event) => {
+			event.preventDefault();
+
+			const formData = new FormData(form);
+			const data = Object.fromEntries(formData.entries());
+
+			try {
+				const response = await fetch(webhookUrl, {
+					method: 'POST',
+					body: JSON.stringify(data),
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				});
+
+				if (response.ok) {
+					// Affiche le message de succès
+					if (formWrapper && successMessage) {
+						formWrapper.style.display = 'none';
+						successMessage.style.display = 'block';
+					}
+				} else {
+					// Affiche le message d'erreur
+					if (errorMessage) {
+						errorMessage.style.display = 'block';
+					}
+				}
+			} catch (error) {
+				// Affiche le message d'erreur
+				if (errorMessage) {
+					errorMessage.style.display = 'block';
+				}
+			}
+		});
+	</script>
 </Layout>
