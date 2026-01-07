@@ -4,9 +4,10 @@ import Logo from '../components/Logo.astro';
 
 interface Props {
 	title?: string;
+	page?: string;
 }
 
-const { title = 'Mon Site Vitrine' } = Astro.props;
+const { title = 'ARC6 - Economie de la construction', page } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,28 +22,67 @@ const { title = 'Mon Site Vitrine' } = Astro.props;
 		<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Lexend+Deca:wght@400;700&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
 		<title>{title}</title>
 	</head>
-	<body class="min-h-screen flex flex-col">
-		<!-- Lignes décoratives globales (en arrière-plan) -->
-		<div class="fixed top-1/3 left-0 w-full h-[2px] bg-white mix-blend-difference z-10 pointer-events-none"></div>
-		<div class="fixed top-0 left-[20%] h-screen w-[2px] bg-white mix-blend-difference z-10 pointer-events-none"></div>
-
-		<nav class="relative bg-arc6-dark-gray p-4 z-30">
-			<!-- Ligne d'illusion (au premier plan de la barre de navigation) -->
-			<div class="absolute top-0 left-[20%] h-full w-[2px] bg-white mix-blend-difference pointer-events-none z-40"></div>
-			<div class="relative container mx-auto flex justify-between items-stretch z-10">
-				<a href="/" class="flex items-center">
-					<Logo class="h-12 text-arc6-blue" />
-				</a>
-				<ul class="flex space-x-2">
-					<li class="h-full"><a href="/" class="px-4 flex items-center h-full text-arc6-blue hover:text-white font-bold font-lexend uppercase text-sm"><span class="relative">Accueil</span></a></li>
-					<li class="h-full"><a href="/about" class="px-4 flex items-center h-full text-arc6-blue hover:text-white font-bold font-lexend uppercase text-sm"><span class="relative">À Propos</span></a></li>
-					<li class="h-full"><a href="/services" class="px-4 flex items-center h-full text-arc6-blue hover:text-white font-bold font-lexend uppercase text-sm"><span class="relative">Services</span></a></li>
-					<li class="h-full"><a href="/contact" class="px-4 flex items-center h-full text-arc6-blue hover:text-white font-bold font-lexend uppercase text-sm"><span class="relative">Contact</span></a></li>
-				</ul>
+	<body class="min-h-screen flex flex-col bg-arc6-blue">
+		<div class="relative w-full h-full flex-grow flex flex-col">
+			<!-- Zone pour le fond d'écran global -->
+			<div class="absolute inset-0 z-0">
+				<div class="absolute inset-0 bg-[url('/src/assets/images/marina-zvada-fNxmdlYHRm8-unsplash.jpg')] bg-cover bg-center">
+					<div class="absolute inset-0 bg-arc6-blue/80"></div>
+				</div>
 			</div>
-		</nav>
-		<main class="relative z-20">
-			<slot /> <!-- Slot par défaut pour le contenu principal -->
-		</main>
+
+			<!-- Lignes décoratives globales (en arrière-plan du contenu) -->
+			<div id="line-h" class:list={[
+				"fixed top-1/3 left-0 w-full h-[3px] bg-white mix-blend-difference z-10 pointer-events-none",
+				{ 'opacity-0': page === 'home', 'opacity-25': page !== 'home' }
+			]}></div>
+			<div id="line-v" class:list={[
+				"fixed top-0 left-[20%] h-screen w-[3px] bg-white mix-blend-difference z-10 pointer-events-none",
+				{ 'opacity-0': page === 'home', 'opacity-25': page !== 'home' }
+			]}></div>
+
+			<nav class="relative bg-arc6-dark-gray p-4 z-30">
+				<div class="container mx-auto flex justify-between items-center">
+					<a href="/" class="flex items-center">
+						<Logo class="h-12 text-arc6-blue" />
+					</a>
+					<!-- Desktop Menu -->
+					<ul class="hidden md:flex space-x-2">
+						<li><a href="/" class="px-4 py-2 block text-arc6-blue hover:text-white font-bold font-lexend uppercase text-sm">Accueil</a></li>
+						<li><a href="/about" class="px-4 py-2 block text-arc6-blue hover:text-white font-bold font-lexend uppercase text-sm">À Propos</a></li>
+						<li><a href="/services" class="px-4 py-2 block text-arc6-blue hover:text-white font-bold font-lexend uppercase text-sm">Services</a></li>
+						<li><a href="/contact" class="px-4 py-2 block text-arc6-blue hover:text-white font-bold font-lexend uppercase text-sm">Contact</a></li>
+					</ul>
+					<!-- Burger Button -->
+					<div class="md:hidden">
+						<button id="burger-button" class="text-arc6-blue focus:outline-none">
+							<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+							</svg>
+						</button>
+					</div>
+				</div>
+				<!-- Mobile Menu -->
+				<div id="mobile-menu" class="hidden md:hidden mt-4 text-right">
+					<a href="/" class="block py-2 px-4 text-white hover:bg-gray-700 font-lexend uppercase">Accueil</a>
+					<a href="/about" class="block py-2 px-4 text-white hover:bg-gray-700 font-lexend uppercase">À Propos</a>
+					<a href="/services" class="block py-2 px-4 text-white hover:bg-gray-700 font-lexend uppercase">Services</a>
+					<a href="/contact" class="block py-2 px-4 text-white hover:bg-gray-700 font-lexend uppercase">Contact</a>
+				</div>
+			</nav>
+			<main class="relative z-20 flex-grow">
+				<slot /> <!-- Slot par défaut pour le contenu principal -->
+			</main>
+		</div>
+		<script>
+			const burgerButton = document.getElementById('burger-button');
+			const mobileMenu = document.getElementById('mobile-menu');
+	
+			if (burgerButton && mobileMenu) {
+				burgerButton.addEventListener('click', () => {
+					mobileMenu.classList.toggle('hidden');
+				});
+			}
+		</script>
 	</body>
 </html>

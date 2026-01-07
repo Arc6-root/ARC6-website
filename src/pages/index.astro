@@ -2,35 +2,80 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Bienvenue sur notre Site Vitrine">
+<Layout page="home">
 	<!-- Arrière-plan spécifique à la page d'accueil -->
-	<div slot="background" class="absolute inset-0 bg-[url('/src/assets/images/marina-zvada-fNxmdlYHRm8-unsplash.jpg')] bg-cover bg-center">
-		<div class="absolute inset-0 bg-arc6-blue/80"></div>
-	</div>
+	<div slot="background" class="absolute inset-0 bg-arc6-blue/90"></div>
 
-	<!-- Contenu principal de la page d'accueil avec une grille -->
-	<div class="grid grid-cols-5 grid-rows-3 min-h-[calc(100vh-80px)] text-arc6-dark-gray">
-		<div class="col-start-2 col-span-4 row-start-1 flex flex-col justify-end p-8 pb-12">
-			<h1 class="text-5xl font-extrabold text-left animate-fade-in-slide-up" style="animation-delay: 200ms;">Pilotage économique, projets d'exception</h1>
-		</div>
-		<div class="col-start-2 col-span-3 row-start-2 flex flex-col justify-start p-8 pl-12">
-			<p class="text-2xl text-left mb-8 animate-fade-in-slide-up" style="animation-delay: 400ms;">
-				Estimation des coûts, montage d'appels d'offre et suivi financier des projets de travaux : de l'esquisse / diagnostic à l'AOR, la maîtrise financière de A à Z.
+	<!-- Contenu principal de la page d'accueil -->
+	<div class="relative flex items-center justify-center min-h-screen p-4 md:p-8">
+		<div class="text-right text-white max-w-4xl">
+			<h1 class="text-3xl leading-normal sm:text-5xl sm:leading-relaxed font-extrabold mb-4 sm:mb-6 animate-fade-in-slide-up" style="animation-delay: 200ms;">Pilotage économique, projets <span class="bg-arc6-dark-gray text-arc6-blue px-2 rounded">d'exception.</span></h1>
+			<p class="text-lg sm:text-2xl mb-6 sm:mb-8 animate-fade-in-slide-up" style="animation-delay: 400ms;">
+				Estimation des coûts, montage d'appels d'offre et suivi financier des projets de travaux&nbsp;: de l'esquisse / diagnostic à l'AOR, la maîtrise financière de A à Z.
 			</p>
-			<div class="flex flex-col sm:flex-row items-start justify-start space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-slide-up" style="animation-delay: 600ms;">
+			<div class="flex flex-col sm:flex-row items-end justify-end space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-slide-up" style="animation-delay: 600ms;">
 				<a 
 					href="/services" 
-					class="font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out shadow-lg border border-arc6-dark-gray bg-arc6-dark-gray text-arc6-blue hover:bg-transparent hover:text-arc6-dark-gray text-xl"
+					class="font-bold py-3 px-6 w-full sm:w-auto rounded-full transition duration-300 ease-in-out shadow-lg border border-white bg-white text-arc6-dark-gray hover:bg-transparent hover:text-white text-lg sm:text-xl"
 				>
 					Nos Services
 				</a>
 				<a 
+					id="contact-button"
 					href="/contact" 
-					class="font-bold py-3 px-6 rounded-full transition duration-300 ease-in-out shadow-lg border border-arc6-dark-gray bg-transparent text-arc6-dark-gray hover:bg-arc6-dark-gray hover:text-arc6-blue text-xl"
+					class="font-bold py-3 px-6 w-full sm:w-auto rounded-full transition duration-300 ease-in-out shadow-lg border border-white bg-transparent text-white hover:bg-white hover:text-arc6-dark-gray text-lg sm:text-xl"
 				>
 					Contactez-nous
 				</a>
 			</div>
 		</div>
 	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			// Ne lancer l'animation que sur les écrans larges
+			if (window.innerWidth < 768) {
+				const lineH = document.getElementById('line-h');
+				const lineV = document.getElementById('line-v');
+				if(lineH && lineV) {
+					lineH.style.opacity = '0.25';
+					lineV.style.opacity = '0.25';
+				}
+				return;
+			}
+
+			const lineH = document.getElementById('line-h');
+			const lineV = document.getElementById('line-v');
+	
+			if (lineH && lineV) {
+				// 1. Désactiver les transitions et placer au point de départ
+				lineH.style.transition = 'none';
+				lineV.style.transition = 'none';
+				lineH.style.top = '0px';
+				lineV.style.left = '0px';
+	
+				// 2. Attendre un "tick" que le navigateur applique ce changement
+				setTimeout(() => {
+					// 3. Activer la transition AVEC le délai de synchronisation
+					const transitionValue = 'top 1s ease-in-out 200ms, left 1s ease-in-out 200ms, opacity 0.5s ease-in-out 200ms';
+					lineH.style.transition = transitionValue;
+					lineV.style.transition = transitionValue;
+					
+					// 4. Définir l'état final. Le navigateur attendra 200ms avant d'animer.
+					lineH.style.opacity = '0.25';
+					lineV.style.opacity = '0.25';
+	
+					const contactButton = document.getElementById('contact-button');
+					if (contactButton) {
+						const rect = contactButton.getBoundingClientRect();
+						const offset = 16;
+						const targetX = rect.right + offset;
+						const targetY = rect.bottom + offset;
+
+						lineH.style.top = `${targetY}px`;
+						lineV.style.left = `${targetX}px`;
+					}
+				}, 50);
+			}
+		});
+	</script>
 </Layout>

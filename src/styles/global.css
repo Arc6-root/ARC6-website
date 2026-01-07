@@ -4,7 +4,8 @@
 
 @layer base {
   body {
-    @apply font-sans bg-arc6-blue text-arc6-dark-gray;
+    @apply font-sans text-arc6-dark-gray;
+    background-color: transparent; /* Assurer la transparence pour le slot de fond */
   }
   h1 {
     @apply font-lexend;
