@@ -1,26 +1,110 @@
 ---
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
 	title?: string;
+	description?: string;
+	ogImage?: string;
 	page?: string;
 }
 
-const { title = 'ARC6 - Economie de la construction', page } = Astro.props;
+const { 
+	title = 'ARC6 - Économiste de la Construction à Angers | Ingénierie Économique BTP',
+	description = 'Expert en économie de la construction à Angers. Estimation des coûts, appels d\'offre, suivi financier de chantier. Partenaire des architectes et MOE en Pays de la Loire.',
+	ogImage = '/og-image.jpg',
+	page 
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Essentials -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="author" content="ARC6 - Vincent Ouchard" />
+		<meta name="robots" content="index, follow" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(ogImage, Astro.site)} />
+		<meta property="og:locale" content="fr_FR" />
+		<meta property="og:site_name" content="ARC6 Ingénierie" />
+		
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+		
+		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Lexend+Deca:wght@400;700&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
-		<title>{title}</title>
+		
+		<!-- Schema.org LocalBusiness JSON-LD -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "ProfessionalService",
+				"name": "ARC6 Ingénierie",
+				"image": "https://www.arc6.fr/og-image.jpg",
+				"description": "Expert en économie de la construction à Angers. Estimation des coûts, appels d'offre, suivi financier de chantier pour architectes et maîtres d'ouvrage.",
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "12 boulevard Daviers",
+					"addressLocality": "Angers",
+					"postalCode": "49100",
+					"addressCountry": "FR"
+				},
+				"geo": {
+					"@type": "GeoCoordinates",
+					"latitude": 47.4738,
+					"longitude": -0.5528
+				},
+				"url": "https://www.arc6.fr",
+				"email": "contact@arc6.fr",
+				"areaServed": [
+					{
+						"@type": "City",
+						"name": "Angers"
+					},
+					{
+						"@type": "AdministrativeArea",
+						"name": "Pays de la Loire"
+					}
+				],
+				"priceRange": "$$",
+				"serviceType": [
+					"Économie de la construction",
+					"Estimation des coûts de construction",
+					"Montage d'appels d'offre",
+					"Suivi financier de chantier",
+					"Assistance à maîtrise d'ouvrage"
+				],
+				"knowsAbout": [
+					"Bâtiment",
+					"Travaux publics",
+					"VRD",
+					"Marchés publics",
+					"Réhabilitation"
+				]
+			}
+		</script>
 	</head>
 	<body class="min-h-screen flex flex-col bg-arc6-blue">
 		<div class="relative w-full h-full flex-grow flex flex-col">
@@ -31,15 +115,15 @@ const { title = 'ARC6 - Economie de la construction', page } = Astro.props;
 				</div>
 			</div>
 
-			<!-- Lignes décoratives globales (en arrière-plan du contenu) -->
-			<div id="line-h" class:list={[
-				"fixed top-1/3 left-0 w-full h-[3px] bg-white mix-blend-difference z-10 pointer-events-none",
-				{ 'opacity-0': page === 'home', 'opacity-25': page !== 'home' }
-			]}></div>
-			<div id="line-v" class:list={[
-				"fixed top-0 left-[20%] h-screen w-[3px] bg-white mix-blend-difference z-10 pointer-events-none",
-				{ 'opacity-0': page === 'home', 'opacity-25': page !== 'home' }
-			]}></div>
+		<!-- Lignes décoratives globales (en arrière-plan du contenu) -->
+		<div id="line-h" class:list={[
+			"absolute top-1/3 left-0 w-full h-[3px] bg-white mix-blend-difference z-10 pointer-events-none",
+			{ 'opacity-0': page === 'home', 'opacity-25': page !== 'home' }
+		]}></div>
+		<div id="line-v" class:list={[
+			"absolute top-0 left-[20%] h-full w-[3px] bg-white mix-blend-difference z-10 pointer-events-none",
+			{ 'opacity-0': page === 'home', 'opacity-25': page !== 'home' }
+		]}></div>
 
 			<nav class="relative bg-arc6-dark-gray p-4 z-30">
 				<div class="container mx-auto flex justify-between items-center">
@@ -70,11 +154,12 @@ const { title = 'ARC6 - Economie de la construction', page } = Astro.props;
 					<a href="/contact" class="block py-2 px-4 text-white hover:bg-gray-700 font-lexend uppercase">Contact</a>
 				</div>
 			</nav>
-			<main class="relative z-20 flex-grow">
-				<slot /> <!-- Slot par défaut pour le contenu principal -->
-			</main>
-		</div>
-		<script>
+		<main class="relative z-20 flex-grow">
+			<slot /> <!-- Slot par défaut pour le contenu principal -->
+		</main>
+		<Footer />
+	</div>
+	<script>
 			const burgerButton = document.getElementById('burger-button');
 			const mobileMenu = document.getElementById('mobile-menu');
 	

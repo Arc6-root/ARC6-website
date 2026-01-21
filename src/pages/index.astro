@@ -1,18 +1,69 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// SEO optimisé pour l'accueil
+const seoTitle = 'ARC6 - Économiste de la Construction à Angers | Ingénierie Économique BTP';
+const seoDescription = 'Expert en économie de la construction à Angers. Estimation des coûts, appels d\'offre, suivi financier de chantier. Partenaire des architectes et MOE en Pays de la Loire. Devis gratuit.';
 ---
 
-<Layout page="home">
+<Layout title={seoTitle} description={seoDescription} page="home">
 	<!-- Arrière-plan spécifique à la page d'accueil -->
 	<div slot="background" class="absolute inset-0 bg-arc6-blue/90"></div>
 
 	<!-- Contenu principal de la page d'accueil -->
 	<div class="relative flex items-center justify-center min-h-screen p-4 md:p-8">
 		<div class="text-right text-white max-w-4xl">
-			<h1 class="text-3xl leading-normal sm:text-5xl sm:leading-relaxed font-extrabold mb-4 sm:mb-6 animate-fade-in-slide-up" style="animation-delay: 200ms;">Pilotage économique, projets <span class="bg-arc6-dark-gray text-arc6-blue px-2 rounded">d'exception.</span></h1>
-			<p class="text-lg sm:text-2xl mb-6 sm:mb-8 animate-fade-in-slide-up" style="animation-delay: 400ms;">
-				Estimation des coûts, montage d'appels d'offre et suivi financier des projets de travaux&nbsp;: de l'esquisse / diagnostic à l'AOR, la maîtrise financière de A à Z.
+			<!-- H1 sobre (catchphrase) -->
+			<h1 class="text-3xl leading-normal sm:text-5xl sm:leading-relaxed font-extrabold mb-4 sm:mb-6 animate-fade-in-slide-up" style="animation-delay: 200ms;">
+				Maîtrise économique, projets <span class="bg-arc6-dark-gray text-arc6-blue px-2 rounded">d'exception.</span>
+			</h1>
+			
+			<!-- Sous-titre (sorti de la carte) -->
+			<p class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 animate-fade-in-slide-up" style="animation-delay: 300ms;">
+				Estimation des coûts, montage d'appels d'offre et suivi financier des projets de travaux : de l'esquisse au DGD, la maîtrise financière de A à Z.
 			</p>
+			
+			<!-- Section transparente avec description et bullet points -->
+			<div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 sm:p-8 mb-6 sm:mb-8 animate-fade-in-slide-up" style="animation-delay: 400ms;">
+				<!-- Description détaillée -->
+				<p class="text-base sm:text-lg mb-6 leading-relaxed">
+					<strong>Économistes de la construction</strong> basés à <strong>Angers</strong>, nous sommes spécialisés dans l'estimation des coûts, le montage d'appels d'offre et le suivi financier des projets de travaux. Nous sommes les partenaires privilégiés des <strong>architectes, bureaux d'études et Maîtres d'Ouvrage</strong>.
+				</p>
+				
+				<!-- Bullet points horizontaux avec icônes SVG alignés à droite -->
+				<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-base sm:text-lg">
+					<div class="flex items-start gap-3 justify-end text-right">
+						<div>
+							<span class="font-semibold">Expertise TCE</span><br>
+							Bâtiment • VRD • TP
+						</div>
+						<!-- Icône Expertise TCE (outil/règle) -->
+						<svg class="w-6 h-6 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+						</svg>
+					</div>
+					<div class="flex items-start gap-3 justify-end text-right">
+						<div>
+							<span class="font-semibold">Marchés publics</span><br>
+							et privés
+						</div>
+						<!-- Icône Marchés publics (document/contrat) -->
+						<svg class="w-6 h-6 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+						</svg>
+					</div>
+					<div class="flex items-start gap-3 justify-end text-right">
+						<div>
+							<span class="font-semibold">Réactivité</span><br>
+							et disponibilité
+						</div>
+						<!-- Icône Réactivité (éclair/vitesse) -->
+						<svg class="w-6 h-6 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M7 2v11h3v9l7-12h-4l4-8z"/>
+						</svg>
+					</div>
+				</div>
+			</div>
 			<div class="flex flex-col sm:flex-row items-end justify-end space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-slide-up" style="animation-delay: 600ms;">
 				<a 
 					href="/services" 

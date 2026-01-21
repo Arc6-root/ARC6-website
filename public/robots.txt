@@ -1,0 +1,13 @@
+# robots.txt pour ARC6.fr
+# Économiste de la construction - Angers
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.arc6.fr/sitemap-index.xml
+
+# Bloquer fichiers sensibles (si présents)
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /admin/

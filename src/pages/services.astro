@@ -1,36 +1,106 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const seoTitle = 'Services - ARC6 | Économie de la Construction & Suivi de Chantier Angers';
+const seoDescription = 'Économie de la conception, gestion financière de chantier, AMO. Expertise BTP pour architectes et MOE à Angers et Pays de la Loire. Projets publics et privés.';
 ---
 
-<Layout>
+<Layout title={seoTitle} description={seoDescription}>
 	<main class="max-w-5xl mx-auto py-12 px-4">
-		<h1 class="text-4xl font-bold text-center mb-10">Nos Services</h1>
+		
+		<!-- H1 optimisé -->
+		<h1 class="text-4xl font-bold text-center mb-4">Services d'Économie de la Construction</h1>
+		
+		<!-- Sous-titre avec mots-clés -->
+		<p class="text-center text-lg mb-10 max-w-3xl mx-auto">
+			Expert économiste TCE basé à <strong>Angers</strong>, au service des architectes, bureaux d'études et maîtres d'ouvrage en <strong>Pays de la Loire</strong> et partout en France.
+		</p>
+		
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 			
-			<!-- Service 1 -->
+			<!-- Service 1 - H2 enrichi -->
 			<div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
-				<h2 class="text-2xl font-semibold mb-4">Économie de la Conception & Appels d'Offre</h2>
+				<h2 class="text-2xl font-semibold mb-4">Économie de la Conception & Montage d'Appels d'Offre</h2>
 				<p class="flex-grow">
-					Nous intervenons dès la genèse de votre projet pour établir des <span class="underline font-bold">budgets prévisionnels fiables</span> et détaillés. Notre mission est de traduire vos ambitions en un cadre financier maîtrisé, en assurant la rédaction de dossiers de consultation complets et l'<span class="underline font-bold">analyse rigoureuse des offres</span> des entreprises. Cette phase peut être réalisée sur <span class="underline font-bold">toute la France</span>.
+					Nous intervenons dès la genèse de votre projet pour établir des <span class="underline font-bold">estimations de coûts fiables et détaillées</span>. Notre mission : traduire vos ambitions architecturales en un cadre financier maîtrisé.
 				</p>
+				<p class="mt-4 mb-2"><strong>Nos prestations :</strong></p>
+				<ul class="space-y-1 text-sm">
+					<li>• Budgets prévisionnels (ESQ à PRO)</li>
+					<li>• Rédaction CCTP et DPGF</li>
+					<li>• Analyse des offres entreprises</li>
+					<li>• Négociation marchés de travaux</li>
+				</ul>
+				<p class="mt-3 text-sm italic">Intervention : Toute la France</p>
 			</div>
 
 			<!-- Service 2 -->
 			<div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
-				<h2 class="text-2xl font-semibold mb-4">Suivi et Gestion du Financier de Chantier</h2>
+				<h2 class="text-2xl font-semibold mb-4">Suivi Financier de Chantier</h2>
 				<p class="flex-grow">
-					Durant la phase de réalisation, nous assurons un <span class="underline font-bold">suivi financier continu et proactif</span> sur les chantiers situés dans la région des <span class="underline font-bold">Pays de la Loire</span>. De la vérification des situations de travaux à l'établissement des décomptes généraux et définitifs, nous garantissons la conformité au budget initial et préparons, négocions et commandons les éventuels travaux modificatifs avec transparence et précision.
+					Durant la phase de réalisation, nous assurons un <span class="underline font-bold">suivi financier continu et proactif</span> sur vos chantiers en <span class="underline font-bold">Pays de la Loire</span>.
 				</p>
+				<p class="mt-4 mb-2"><strong>Nos prestations :</strong></p>
+				<ul class="space-y-1 text-sm">
+					<li>• Vérification situations de travaux</li>
+					<li>• Décomptes généraux et définitifs (DGD)</li>
+					<li>• Gestion des travaux modificatifs</li>
+					<li>• Préparation et négociation avenants</li>
+				</ul>
+				<p class="mt-3 text-sm italic">Intervention : Pays de la Loire (Angers, Nantes, Le Mans...)</p>
 			</div>
 
 			<!-- Service 3 -->
 			<div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
-				<h2 class="text-2xl font-semibold mb-4">Assistance à Maîtrise d'Ouvrage & Conseil</h2>
+				<h2 class="text-2xl font-semibold mb-4">Assistance à Maîtrise d'Ouvrage (AMO) & Conseil</h2>
 				<p class="flex-grow">
-					Basés à <span class="underline font-bold">Angers</span>, nous agissons comme un partenaire stratégique et offrons une <span class="underline font-bold">expertise transversale</span> pour tous types de projets (TP, Bâtiment, VRD, neuf ou réhabilitation). Nous réalisons des audits, apportons un appui technique et financier à la maîtrise d'ouvrage, et <span class="underline font-bold">sécurisons vos prises de décision</span> à chaque étape clé.
+					Basés à <span class="underline font-bold">Angers</span>, nous agissons comme partenaire stratégique et offrons une <span class="underline font-bold">expertise transversale</span> pour tous types de projets.
 				</p>
+				<p class="mt-4 mb-2"><strong>Nos prestations :</strong></p>
+				<ul class="space-y-1 text-sm">
+					<li>• Audits économiques de projets</li>
+					<li>• Conseil stratégique budgétaire</li>
+					<li>• Aide à la décision maîtrise d'ouvrage</li>
+					<li>• Support technique marchés publics</li>
+				</ul>
+				<p class="mt-3 text-sm italic">Secteurs : TP, Bâtiment, VRD, neuf & réhabilitation</p>
 			</div>
 
 		</div>
+		
+		<!-- Ajout section "Pourquoi choisir ARC6" pour SEO -->
+		<div class="mt-16 bg-arc6-blue/10 rounded-lg p-8">
+			<h2 class="text-3xl font-bold text-center mb-6">Pourquoi Choisir ARC6 ?</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
+				<div>
+					<h3 class="font-bold mb-2">Expertise Technique Reconnue</h3>
+					<p>Maîtrise complète des métiers du bâtiment et des travaux publics. Formation continue sur les évolutions normatives et réglementaires.</p>
+				</div>
+				<div>
+					<h3 class="font-bold mb-2">Réactivité & Disponibilité</h3>
+					<p>Structure indépendante garantissant flexibilité et adaptation à vos contraintes de délais. Proximité géographique en Pays de la Loire.</p>
+				</div>
+				<div>
+					<h3 class="font-bold mb-2">Partenaire de Confiance</h3>
+					<p>Relation de confiance avec architectes et bureaux d'études. Transparence totale dans nos analyses et recommandations.</p>
+				</div>
+				<div>
+					<h3 class="font-bold mb-2">Public & Privé</h3>
+					<p>Expérience solide sur marchés publics (CCAG) et projets privés. Connaissance approfondie de la réglementation des marchés publics.</p>
+				</div>
+			</div>
+		</div>
+		
+		<!-- CTA Section -->
+		<div class="mt-12 text-center">
+			<h2 class="text-2xl font-bold mb-4">Discutons de Votre Projet</h2>
+			<p class="mb-6 max-w-2xl mx-auto">
+				Que vous soyez architecte, bureau d'études ou maître d'ouvrage, parlons ensemble de vos besoins en économie de la construction.
+			</p>
+			<a href="/contact" class="inline-block bg-arc6-dark-gray text-arc6-blue font-bold py-3 px-8 rounded-full hover:bg-gray-600 transition text-lg">
+				Prenons Rendez-vous
+			</a>
+		</div>
+		
 	</main>
 </Layout>

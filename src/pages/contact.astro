@@ -1,27 +1,69 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const seoTitle = 'Contact - ARC6 Angers | Demande de Devis Économiste Construction';
+const seoDescription = 'Contactez ARC6, économiste de la construction à Angers. Architectes, MOE, maîtres d\'ouvrage : demandez un devis gratuit pour votre projet BTP. Réponse rapide garantie.';
 ---
 
-<Layout>
+<Layout title={seoTitle} description={seoDescription}>
 	<main class="max-w-4xl mx-auto py-12 px-4">
-		<h1 class="text-4xl font-bold text-center mb-8">Contactez-nous</h1>
 		
+		<!-- H1 enrichi -->
+		<h1 class="text-4xl font-bold text-center mb-4">Contactez ARC6</h1>
+		<p class="text-center text-lg mb-8 max-w-2xl mx-auto">
+			Architecte, bureau d'études ou maître d'ouvrage ? Parlons de votre projet de construction. <strong>Réponse rapide</strong> garantie.
+		</p>
+		
+		<!-- Ajout section coordonnées avant formulaire -->
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+			<div class="bg-white p-6 rounded-lg shadow-md">
+				<h2 class="text-2xl font-bold mb-4">Nos Coordonnées</h2>
+				<address class="not-italic space-y-3">
+					<p>
+						<strong>ARC6 Ingénierie</strong><br>
+						12 boulevard Daviers<br>
+						49100 Angers<br>
+						Maine-et-Loire, France
+					</p>
+					<p>
+						<strong>Email :</strong><br>
+						<a href="mailto:contact@arc6.fr" class="text-arc6-dark-gray hover:text-arc6-blue font-semibold">
+							contact@arc6.fr
+						</a>
+					</p>
+				</address>
+			</div>
+			
+			<div class="bg-white p-6 rounded-lg shadow-md">
+				<h2 class="text-2xl font-bold mb-4">Délai de Réponse</h2>
+				<p class="mb-3">
+					Nous nous engageons à vous répondre sous <strong>48h ouvrées</strong> maximum.
+				</p>
+				<p>
+					Pour les demandes urgentes (appels d'offre, délais courts), précisez-le dans votre message pour une prise en charge prioritaire.
+				</p>
+			</div>
+		</div>
+		
+		<!-- Formulaire -->
 		<div id="form-wrapper" class="max-w-lg mx-auto">
+			<h2 class="text-2xl font-bold text-center mb-6">Formulaire de Contact</h2>
 			<p class="text-lg text-center mb-8">
-				N'hésitez pas à nous contacter pour toute question ou demande de renseignements.
+				Décrivez-nous votre projet et vos besoins en quelques lignes.
 			</p>
+			
 			<form id="contact-form" method="POST" class="bg-white p-8 rounded-lg shadow-md">
 				<div class="mb-4">
-					<label for="name" class="block text-sm font-bold mb-2">Nom:</label>
-					<input type="text" id="name" name="name" required class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
+					<label for="name" class="block text-sm font-bold mb-2">Nom / Structure :</label>
+					<input type="text" id="name" name="name" required class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="Votre nom ou votre cabinet" />
 				</div>
 				<div class="mb-4">
-					<label for="email" class="block text-sm font-bold mb-2">Email:</label>
-					<input type="email" id="email" name="email" required class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
+					<label for="email" class="block text-sm font-bold mb-2">Email :</label>
+					<input type="email" id="email" name="email" required class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="votre@email.fr" />
 				</div>
 				<div class="mb-6">
-					<label for="message" class="block text-sm font-bold mb-2">Message:</label>
-					<textarea id="message" name="message" rows="5" required class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+					<label for="message" class="block text-sm font-bold mb-2">Message :</label>
+					<textarea id="message" name="message" rows="5" required class="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="Décrivez votre projet : type (bâtiment, TP, VRD), localisation, budget prévisionnel, délais..."></textarea>
 				</div>
 				<div class="flex items-center justify-center">
 					<button type="submit" class="bg-arc6-dark-gray hover:bg-gray-600 text-arc6-blue font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">

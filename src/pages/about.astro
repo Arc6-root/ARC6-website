@@ -1,24 +1,84 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const seoTitle = 'À Propos - ARC6 Ingénierie | Expert Économiste Construction Angers';
+const seoDescription = 'ARC6, cabinet d\'économie de la construction basé à Angers. Expertise BTP, TP, VRD. Partenaire des architectes et MOE en Pays de la Loire. Maîtrise des coûts de l\'esquisse au DGD.';
 ---
 
-<Layout>
+<Layout title={seoTitle} description={seoDescription}>
 	<main class="max-w-4xl mx-auto py-8 px-4 sm:py-12">
 		<div class="bg-white p-6 md:p-12 rounded-lg shadow-lg">
-			<h1 class="text-3xl sm:text-4xl font-bold text-center mb-6 sm:mb-8">Notre Savoir-Faire</h1>
+			
+			<!-- H1 optimisé -->
+			<h1 class="text-3xl sm:text-4xl font-bold text-center mb-6 sm:mb-8">ARC6 Ingénierie - Votre Expert en Économie de la Construction à Angers</h1>
+			
 			<div class="space-y-6 text-base sm:text-lg leading-relaxed">
-				<p>
-					Au cœur de chaque projet de construction, la maîtrise économique est le pilier qui garantit sa viabilité et son succès. Chez ARC6, nous nous positionnons comme l'architecte financier de vos ambitions, apportant une visibilité claire et un contrôle rigoureux des coûts, de la conception initiale (ACT) à la réception finale des ouvrages (AOR).
+				
+				<!-- Paragraphe d'introduction géolocalisé -->
+				<p class="text-xl font-semibold text-center text-arc6-dark-gray">
+					Cabinet d'ingénierie économique basé à <strong>Angers (49)</strong>, au service des professionnels du bâtiment et des travaux publics en <strong>Pays de la Loire</strong>.
 				</p>
+				
 				<p>
-					Notre force réside dans une méthodologie structurée, éprouvée sur le terrain, qui nous confère une adaptabilité et une vitesse d'exécution exceptionnelles. Cette rigueur nous permet d'analyser, de chiffrer et de piloter des projets de toute nature avec la même précision, qu'il s'agisse de marchés publics ou de commandes privées. Nous nous mettons à l'échelle de vos exigences, sans jamais compromettre la qualité de notre analyse.
+					Au cœur de chaque projet de construction, la <strong>maîtrise économique</strong> est le pilier qui garantit sa viabilité et son succès. Chez ARC6, nous nous positionnons comme l'<strong>architecte financier</strong> de vos ambitions, apportant une visibilité claire et un contrôle rigoureux des coûts, de la conception initiale (APS à ACT) au Décompte Général Définitif (DGD).
 				</p>
+				
+				<h2 class="text-2xl font-bold mt-8 mb-4">Notre Méthodologie</h2>
 				<p>
-					Notre flexibilité est le fruit de notre expérience diversifiée. Nous intervenons avec une égale aisance sur des chantiers de travaux publics, de bâtiment, de voirie et réseaux divers (VRD), que ce soit dans le cadre de constructions neuves ou de projets de réhabilitation complexes. Cette polyvalence fait de nous un partenaire unique, capable de vous accompagner sur l'ensemble de vos opérations.
+					Notre force réside dans une <strong>méthodologie structurée</strong>, éprouvée sur le terrain, qui nous confère une adaptabilité et une vitesse d'exécution exceptionnelles. Cette rigueur nous permet d'analyser, de chiffrer et de piloter des projets de toute nature avec la même précision, qu'il s'agisse de <strong>marchés publics</strong> ou de <strong>commandes privées</strong>. Nous nous mettons à l'échelle de vos exigences, sans jamais compromettre la qualité de notre analyse.
 				</p>
-	      <p>
-	        Plus qu'un prestataire, nous agissons comme un véritable partenaire stratégique pour la maîtrise d'ouvrage et la maîtrise d'œuvre. Nous sécurisons vos appels d'offre, optimisons vos budgets et assurons un suivi financier transparent, vous permettant de vous concentrer sur l'essentiel : la réalisation d'un projet de qualité, livré dans les temps.
-	      </p>
+				
+				<h2 class="text-2xl font-bold mt-8 mb-4">Domaines d'Expertise</h2>
+				<p>
+					Notre flexibilité est le fruit de notre expérience diversifiée. Nous intervenons avec une égale aisance sur des chantiers de :
+				</p>
+				<ul class="list-disc list-inside space-y-2 ml-4">
+					<li><strong>Bâtiment</strong> : logements, ERP, tertiaire, industrie</li>
+					<li><strong>Constructions neuves</strong> et <strong>projets de réhabilitation complexes</strong></li>
+					<li><strong>Travaux publics (TP)</strong> : infrastructures, génie civil</li>
+					<li><strong>Voirie et Réseaux Divers (VRD)</strong> : aménagements urbains</li>
+				</ul>
+				<p>
+					Cette polyvalence fait de nous un partenaire unique, capable de vous accompagner sur l'ensemble de vos opérations.
+				</p>
+				
+				<h2 class="text-2xl font-bold mt-8 mb-4">Partenaire des Architectes et Bureaux d'Études</h2>
+				<p>
+					Plus qu'un prestataire, nous agissons comme un <strong>véritable partenaire stratégique</strong> pour la maîtrise d'ouvrage et la <strong>maîtrise d'œuvre</strong>. Notre objectif : sécuriser vos appels d'offre, optimiser vos budgets et assurer un suivi financier transparent, vous permettant de vous concentrer sur l'essentiel - la réalisation d'un projet de qualité, livré dans les temps et le budget.
+				</p>
+				
+				<!-- Ajout section géographique -->
+				<div class="bg-arc6-blue/10 rounded-lg p-6 mt-8">
+					<h2 class="text-2xl font-bold mb-4">Zone d'Intervention</h2>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+						<div>
+							<h3 class="font-bold text-lg mb-2">Conception & Appels d'Offre</h3>
+							<p><strong>Toute la France</strong> - Interventions à distance ou sur site selon les besoins du projet.</p>
+						</div>
+						<div>
+							<h3 class="font-bold text-lg mb-2">Suivi de Chantier</h3>
+							<p><strong>Pays de la Loire</strong> - Angers, Nantes, Le Mans, Cholet, Laval, Saumur et agglomérations.</p>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Ajout section valeurs -->
+				<h2 class="text-2xl font-bold mt-8 mb-4">Nos Valeurs</h2>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+					<div class="border-l-4 border-arc6-blue pl-4">
+						<h3 class="font-bold mb-2">Rigueur</h3>
+						<p class="text-sm">Analyses précises et chiffrages détaillés pour sécuriser vos projets.</p>
+					</div>
+					<div class="border-l-4 border-arc6-blue pl-4">
+						<h3 class="font-bold mb-2">Transparence</h3>
+						<p class="text-sm">Communication claire et reporting régulier à chaque étape.</p>
+					</div>
+					<div class="border-l-4 border-arc6-blue pl-4">
+						<h3 class="font-bold mb-2">Réactivité</h3>
+						<p class="text-sm">Disponibilité et adaptation rapide aux imprévus de chantier.</p>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 	</main>

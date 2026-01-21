@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const seoTitle = 'FAQ - Questions Fréquentes | ARC6 Économiste Construction Angers';
+const seoDescription = 'Tout savoir sur l\'économie de la construction : rôle de l\'économiste, tarifs, marchés publics, DPGF, CCTP. Réponses d\'expert par ARC6 Angers.';
+
+const faqs = [
+	{
+		question: "Qu'est-ce qu'un économiste de la construction ?",
+		answer: "L'économiste de la construction est un expert qui pilote l'aspect financier d'un projet de bâtiment ou de travaux publics. Il établit les estimations de coûts, rédige les pièces techniques (DPGF, CCTP), analyse les offres des entreprises et suit le budget pendant toute la durée du chantier."
+	},
+	{
+		question: "Quand faire appel à un économiste de la construction ?",
+		answer: "Idéalement dès la phase d'esquisse (ESQ) pour établir un budget prévisionnel fiable. L'économiste intervient ensuite à chaque phase : APS, APD, PRO, DCE, puis pendant le chantier pour le suivi financier jusqu'au DGD (Décompte Général Définitif)."
+	},
+	{
+		question: "Quelle est la différence entre un économiste et un architecte ?",
+		answer: "L'architecte conçoit le projet (plans, esthétique, faisabilité technique), tandis que l'économiste traduit ce projet en termes financiers. Nous travaillons en étroite collaboration : l'architecte imagine, l'économiste chiffre et optimise le budget."
+	},
+	{
+		question: "Qu'est-ce que le DPGF et le CCTP ?",
+		answer: "Le DPGF (Décomposition du Prix Global et Forfaitaire) détaille quantitativement tous les ouvrages du projet. Le CCTP (Cahier des Clauses Techniques Particulières) décrit qualitativement comment les travaux doivent être réalisés. Ces documents sont essentiels pour les appels d'offre."
+	},
+	{
+		question: "Intervenez-vous sur des marchés publics ?",
+		answer: "Oui, nous avons une solide expertise des marchés publics et de la réglementation associée (Code de la commande publique, CCAG Travaux). Nous accompagnons maîtrises d'ouvrage publiques et MOE dans le montage et l'analyse des consultations."
+	},
+	{
+		question: "Travaillez-vous partout en France ?",
+		answer: "Pour les missions de conception et montage d'appels d'offre : oui, nous intervenons partout en France. Pour le suivi de chantier qui nécessite des visites régulières sur site, nous nous concentrons sur les Pays de la Loire."
+	},
+	{
+		question: "Combien coûtent vos services ?",
+		answer: "Nos honoraires dépendent de la nature de la mission, de la complexité du projet et de sa durée. Nous proposons systématiquement un devis détaillé et transparent après étude de votre demande. N'hésitez pas à nous contacter pour un chiffrage personnalisé."
+	},
+	{
+		question: "Quel est votre délai d'intervention ?",
+		answer: "Nous nous adaptons à vos contraintes. Pour une estimation budgétaire simple, comptez 3 à 5 jours. Pour un DCE complet (CCTP + DPGF), selon l'ampleur du projet, entre 2 et 4 semaines. Nous pouvons accélérer les délais en cas d'urgence."
+	},
+	{
+		question: "Proposez-vous des partenariats avec les architectes ?",
+		answer: "Absolument ! Nous cherchons à établir des relations de confiance durables avec les architectes et bureaux d'études. Nous pouvons intervenir ponctuellement ou devenir votre économiste référent sur l'ensemble de vos projets."
+	},
+	{
+		question: "Sur quels types de projets intervenez-vous ?",
+		answer: "Nous couvrons tous les secteurs : bâtiment (logements, ERP, tertiaire, industriel), travaux publics (infrastructures, génie civil), VRD (aménagements urbains). Nous traitons aussi bien du neuf que de la réhabilitation, sur marchés publics comme privés."
+	},
+	{
+		question: "Pourquoi choisir un économiste basé à Angers ?",
+		answer: "Notre implantation à Angers nous permet une grande réactivité sur les chantiers des Pays de la Loire (Angers, Nantes, Le Mans, Cholet, Laval). Nous faisons appel à des entreprises du tissu économique local de la région, ce qui facilite les négociations et le suivi de chantier."
+	}
+];
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+	<main class="max-w-4xl mx-auto py-12 px-4">
+		
+		<h1 class="text-4xl font-bold text-center mb-4">Questions Fréquentes</h1>
+		<p class="text-center text-lg mb-12 max-w-2xl mx-auto">
+			Vous vous posez des questions sur l'<strong>économie de la construction</strong> ou nos services ? Voici les réponses aux interrogations les plus courantes de nos clients architectes et maîtres d'ouvrage.
+		</p>
+		
+		<!-- Liste FAQ avec Schema.org FAQPage -->
+		<div class="space-y-6">
+			{faqs.map((faq, index) => (
+				<div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+					<h2 class="text-xl font-bold mb-3 text-arc6-dark-gray">
+						{index + 1}. {faq.question}
+					</h2>
+					<p class="text-base leading-relaxed">
+						{faq.answer}
+					</p>
+				</div>
+			))}
+		</div>
+		
+		<!-- CTA -->
+		<div class="mt-12 text-center bg-arc6-blue/10 rounded-lg p-8">
+			<h2 class="text-2xl font-bold mb-4">Votre question n'est pas listée ?</h2>
+			<p class="mb-6">
+				N'hésitez pas à nous contacter directement. Nous sommes là pour répondre à toutes vos interrogations sur l'économie de la construction.
+			</p>
+			<a href="/contact" class="inline-block bg-arc6-dark-gray text-arc6-blue font-bold py-3 px-8 rounded-full hover:bg-gray-600 transition">
+				Prenons Rendez-vous
+			</a>
+		</div>
+		
+	</main>
+	
+	<!-- Schema.org FAQPage -->
+	<script type="application/ld+json" set:html={JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"mainEntity": faqs.map(faq => ({
+			"@type": "Question",
+			"name": faq.question,
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": faq.answer
+			}
+		}))
+	})} />
+</Layout>

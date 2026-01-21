@@ -1,0 +1,26 @@
+/* TEAM */
+    Economiste de la construction : Vincent Touchard
+    Localisation : Angers, Maine-et-Loire, France
+    Contact : contact@arc6.fr
+    Site web : https://www.arc6.fr
+
+/* SITE */
+    Standards : HTML5, CSS3, JavaScript ES6+
+    Framework : Astro 5.16
+    Styles : Tailwind CSS 3.4
+    Composants : Astro Components
+    Derniere mise a jour : 2026-01-21
+    Langue : Francais
+    Hebergement : OVH
+
+/* THANKS */
+    Unsplash pour les images de fond
+    Google Fonts pour les polices Lexend Deca, Arvo, Padauk
+
+/* EXPERTISE */
+    Economie de la construction
+    Estimation des couts de construction
+    Montage d'appels d'offre (CCTP, DPGF, DCE)
+    Suivi financier de chantier
+    Assistance a maitrise d'ouvrage (AMO)
+    Secteurs : Batiment, Travaux Publics, VRD
